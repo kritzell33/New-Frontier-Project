@@ -13,48 +13,10 @@ import numpy as np
 from .Agents import ACTIONS, CrewAgent
 from .events import EventDirector
 from .social import RelationshipGraph
+from .Mission import Mission
 
 
 #Programmable by users
-
-@dataclass
-class Mission:
-    designation: str
-    length: int
-    crewmodule: str
-    onboard_science_experiments_per_mission: int
-    eva_experiments_per_mission: int
-    landing_zone: str
-    space_station_workdays: int
-    surface_experiments: int
-
-class Hardware:
-    name: str
-    size: int
-    location: int
-    classification: int
-    repair_knowledge_type: int
-
-class Experiment:
-    name: str
-    knowledge_type: int
-    deadline_day: int
-    hardware: Hardware
-    assigned_to: str
-
-#General classes for simulation
-
-class Task:
-    name: str
-    kind: str
-    effort_remaining: float
-    created_0015: float
-    deadline_0015: float | None = None   
-    urgency = int
-    completed_0015: float | None = None
-    multi = bool
-    claimed_by: str | None = None
-    also_claimed_by: str | None = None  
 
 class MissionModel(mesa.Model):
     def __init__(self, agents: list[CrewAgent], env: simpy.Environment):
